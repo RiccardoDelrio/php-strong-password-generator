@@ -62,7 +62,7 @@ include_once "./functions.php"
             <button class="btn btn-primary" type="submit"> Invia</button>
             <button class="btn btn-secondary" type="reset"> Annulla</button>
             <?php
-            echo "Password generata: " . generatePassword(10) . "";
+            echo "Password generata: " . generatePassword(length: $_GET["lunghezza"]);
             ?>
         </form>
     </div>
