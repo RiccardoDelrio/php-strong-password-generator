@@ -12,10 +12,15 @@
 
 <body>
     <?php
-
-
-
-
+    function generatePassword($length)
+    {
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+';
+        $password = '';
+        for ($i = 0; $i < $length; $i++) {
+            $password .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $password;
+    }
     ?>
     <div class="container mt-3  ">
 
@@ -61,7 +66,9 @@
             </div>
             <button class="btn btn-primary" type="submit"> Invia</button>
             <button class="btn btn-secondary" type="reset"> Annulla</button>
-
+            <?php
+            echo "Password generata: " . generatePassword(10) . "";
+            ?>
         </form>
     </div>
 
