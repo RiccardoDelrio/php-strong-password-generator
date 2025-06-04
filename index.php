@@ -1,3 +1,8 @@
+<?php
+
+include_once "./functions.php"
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +16,7 @@
 </head>
 
 <body>
-    <?php
-    function generatePassword($length)
-    {
-        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+';
-        $password = '';
-        for ($i = 0; $i < $length; $i++) {
-            $password .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $password;
-    }
-    ?>
+
     <div class="container mt-3  ">
 
         <h1 class="text-center">Generatore di Password</h1>
