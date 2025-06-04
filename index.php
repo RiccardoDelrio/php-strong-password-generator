@@ -1,8 +1,13 @@
 <?php
+include_once "./functions.php";
+session_start();
 
-include_once "./functions.php"
-
-    ?>
+if (isset($_GET["lunghezza"]) && !empty($_GET["lunghezza"])) {
+    $_SESSION["password"] = generatePassword(length: $_GET["lunghezza"]);
+    header("Location: ./result.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +29,7 @@ include_once "./functions.php"
         <form action="index.php" method="get">
             <div>
                 <label for="lunghezza">Lunghezza password</label>
-                <input type="text" id="lunghezza" name="lunghezza">
+                <input type="number" min="1" id="lunghezza" name="lunghezza">
             </div>
             <div class="d-flex gap-3">
                 <label>Consenti caratteri uguali?</label>
@@ -61,9 +66,7 @@ include_once "./functions.php"
             </div>
             <button class="btn btn-primary" type="submit"> Invia</button>
             <button class="btn btn-secondary" type="reset"> Annulla</button>
-            <?php
-            echo "Password generata: " . generatePassword(length: $_GET["lunghezza"]);
-            ?>
+
         </form>
     </div>
 
