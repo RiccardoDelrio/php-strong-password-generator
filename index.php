@@ -3,12 +3,22 @@ include_once "./functions.php";
 session_start();
 
 if (isset($_GET["lunghezza"]) && !empty($_GET["lunghezza"])) {
+    $use_uppercase = isset($_GET["maiuscole"]);
+    $use_lowercase = isset($_GET["minuscole"]);
+    $use_numbers = isset($_GET["numeri"]);
+    $use_symbols = isset($_GET["simboli"]);
+
+    // Se nessuna opzione è selezionata, abilita tutti i set di caratteri
+    if (!$use_uppercase && !$use_lowercase && !$use_numbers && !$use_symbols) {
+        $use_uppercase = $use_lowercase = $use_numbers = $use_symbols = true;
+    }
+
     $_SESSION["password"] = generatePassword(
         length: $_GET["lunghezza"],
-        use_uppercase: isset($_GET["maiuscole"]),
-        use_lowercase: isset($_GET["minuscole"]),
-        use_numbers: isset($_GET["numeri"]),
-        use_symbols: isset($_GET["simboli"])
+        use_uppercase: $use_uppercase,
+        use_lowercase: $use_lowercase,
+        use_numbers: $use_numbers,
+        use_symbols: $use_symbols
     );
     header("Location: ./result.php");
     exit;
