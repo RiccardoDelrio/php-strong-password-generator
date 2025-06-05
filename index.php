@@ -48,21 +48,7 @@ if (isset($_GET["lunghezza"]) && !empty($_GET["lunghezza"])) {
                 <label for="lunghezza">Lunghezza password</label>
                 <input type="number" min="1" id="lunghezza" name="lunghezza">
             </div>
-            <div class="d-flex gap-3">
-                <label>Consenti caratteri uguali?</label>
-                <div>
 
-
-                    <div>
-                        <input type="radio" id="caratteri_uguali_si" name="caratteri_uguali" value="true">
-                        <label for="caratteri_uguali_si">Sì</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="caratteri_uguali_no" name="caratteri_uguali" value="false">
-                        <label for="caratteri_uguali_no">No</label>
-                    </div>
-                </div>
-            </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="true" id="maiuscole" name="maiuscole">
                 <label class="form-check-label" for="maiuscole">
