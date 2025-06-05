@@ -3,9 +3,16 @@ include_once "./functions.php";
 session_start();
 
 if (isset($_GET["lunghezza"]) && !empty($_GET["lunghezza"])) {
-    $_SESSION["password"] = generatePassword(length: $_GET["lunghezza"]);
+    $_SESSION["password"] = generatePassword(
+        length: $_GET["lunghezza"],
+        use_uppercase: isset($_GET["maiuscole"]),
+        use_lowercase: isset($_GET["minuscole"]),
+        use_numbers: isset($_GET["numeri"]),
+        use_symbols: isset($_GET["simboli"])
+    );
     header("Location: ./result.php");
     exit;
+
 }
 ?>
 <!DOCTYPE html>
@@ -47,20 +54,26 @@ if (isset($_GET["lunghezza"]) && !empty($_GET["lunghezza"])) {
                 </div>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" id="lettere" name="lettere">
-                <label class="form-check-label" for="lettere">
-                    Lettere
+                <input class="form-check-input" type="checkbox" value="true" id="maiuscole" name="maiuscole">
+                <label class="form-check-label" for="maiuscole">
+                    Lettere maiuscole
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" id="Numeri" name="numeri">
-                <label class="form-check-label" for="Numeri">
+                <input class="form-check-input" type="checkbox" value="true" id="minuscole" name="minuscole">
+                <label class="form-check-label" for="minuscole">
+                    Lettere minuscole
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="true" id="numeri" name="numeri">
+                <label class="form-check-label" for="numeri">
                     Numeri
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" id="Simboli" name="simboli">
-                <label class="form-check-label" for="Simboli">
+                <input class="form-check-input" type="checkbox" value="true" id="simboli" name="simboli">
+                <label class="form-check-label" for="simboli">
                     Simboli
                 </label>
             </div>
